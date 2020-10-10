@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".ui.health.EditData.EditDataActivity"></activity>
         <activity android:name=".ui.health.EnterData.EnterDataActivity"></activity>
+        <activity android:name=".ui.history.HistoryEdit.HistoryEditActivity"></activity>
     </application>
 
 </manifest>

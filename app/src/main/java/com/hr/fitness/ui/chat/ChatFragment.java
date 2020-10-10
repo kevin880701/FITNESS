@@ -15,6 +15,8 @@ import androidx.lifecycle.ViewModelProvider;
 import com.hr.fitness.MainActivity;
 import com.hr.fitness.R;
 
+import butterknife.ButterKnife;
+
 public class ChatFragment extends Fragment {
 
     private ChatViewModel chatViewModel;
@@ -24,6 +26,7 @@ public class ChatFragment extends Fragment {
                              ViewGroup container, Bundle savedInstanceState) {
         chatViewModel = new ViewModelProvider(this).get(ChatViewModel.class);
         View root = inflater.inflate(R.layout.fragment_chat, container, false);
+        ButterKnife.bind(this, root);
 
         mainActivity = (MainActivity) getActivity();
 

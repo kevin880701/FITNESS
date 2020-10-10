@@ -23,10 +23,10 @@ import com.hr.fitness.R;
 import com.hr.fitness.SQLite.SQLiteDBHelper;
 import com.hr.fitness.ui.health.EditData.EditDataActivity;
 import com.hr.fitness.ui.health.bmi.bmiLineChartFragment;
-import com.hr.fitness.ui.health.bmi.bodyFatLineChartFragment;
-import com.hr.fitness.ui.health.bmi.heightLineChartFragment;
-import com.hr.fitness.ui.health.bmi.waistLineChartFragment;
-import com.hr.fitness.ui.health.bmi.weightLineChartFragment;
+import com.hr.fitness.ui.health.bodyFat.bodyFatLineChartFragment;
+import com.hr.fitness.ui.health.height.heightLineChartFragment;
+import com.hr.fitness.ui.health.waist.waistLineChartFragment;
+import com.hr.fitness.ui.health.weight.weightLineChartFragment;
 
 import java.util.ArrayList;
 

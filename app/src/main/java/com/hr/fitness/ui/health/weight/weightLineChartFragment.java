@@ -1,6 +1,7 @@
-package com.hr.fitness.ui.health.bmi;
+package com.hr.fitness.ui.health.weight;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,17 +22,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
-public class bodyFatLineChartFragment extends Fragment {
-
-    LineChartData lineChartData;
-    Model model;
-    ArrayList<String> dateList;
-    public ArrayList<Record> recordList;
-    DecimalFormat df;
-    Float min = 9999f;
-    Float max = 0f;
-    boolean isFirstLoad = true;
+public class weightLineChartFragment extends Fragment {
     @BindView(R.id.lineChart)
     LineChart lineChart;
     @BindView(R.id.text1)
@@ -43,7 +34,16 @@ public class bodyFatLineChartFragment extends Fragment {
     @BindView(R.id.text4)
     TextView text4;
 
-    public bodyFatLineChartFragment(Model model) {
+    LineChartData lineChartData;
+    Model model;
+    ArrayList<String> dateList;
+    public ArrayList<Record> recordList;
+    DecimalFormat df;
+    Float min = 9999f;
+    Float max = 0f;
+    boolean isFirstLoad = true;
+
+    public weightLineChartFragment(Model model) {
         this.model = model;
         recordList = model.getRecordList();
         dateList = new ArrayList<>();
@@ -54,6 +54,7 @@ public class bodyFatLineChartFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_bmi_linechart, container, false);
         ButterKnife.bind(this, rootView);
+        Log.v("777777", "77777" + dateList.size());
 
         lineChartData = new LineChartData(lineChart, getContext());
 
@@ -63,21 +64,21 @@ public class bodyFatLineChartFragment extends Fragment {
         if (recordList.size() > 0) {
             if (recordList.size() <= 10) {
                 for (int i = 1; i <= recordList.size(); i++) {
-                    Float currentMin = Float.parseFloat(recordList.get(i - 1).getBodyFat());
-                    Float currentMax = Float.parseFloat(recordList.get(i - 1).getBodyFat());
+                    Float currentMin = Float.parseFloat(recordList.get(i - 1).getWeight());
+                    Float currentMax = Float.parseFloat(recordList.get(i - 1).getWeight());
                     if (currentMin <= min) {
                         min = currentMin;
                     }
                     if (currentMin >= max) {
                         max = currentMax;
                     }
-                    valuesList.add(new Entry(i - 1, Float.parseFloat(recordList.get(i - 1).getBodyFat())));
+                    valuesList.add(new Entry(i - 1, Float.parseFloat(recordList.get(i - 1).getWeight())));
                     dateList.add(recordList.get(i - 1).getDate().substring(6, 11));
                 }
             } else {
                 int j = 1;
                 for (int i = 10; i >= 0; i--) {
-                    valuesList.add(new Entry(j - 1, Float.parseFloat(recordList.get(j - 1).getBodyFat())));
+                    valuesList.add(new Entry(j - 1, Float.parseFloat(recordList.get(j - 1).getWeight())));
                     dateList.add(recordList.get(recordList.size() - 1 - i).getDate().substring(6, 11));
                     j++;
                 }

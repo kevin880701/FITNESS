@@ -1,4 +1,4 @@
-package com.hr.fitness.ui.health.bmi;
+package com.hr.fitness.ui.health.waist;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -21,8 +21,7 @@ import java.util.ArrayList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class heightLineChartFragment extends Fragment {
-
+public class waistLineChartFragment extends Fragment {
 
     LineChartData lineChartData;
     Model model;
@@ -43,7 +42,7 @@ public class heightLineChartFragment extends Fragment {
     @BindView(R.id.text4)
     TextView text4;
 
-    public heightLineChartFragment(Model model) {
+    public waistLineChartFragment(Model model) {
         this.model = model;
         recordList = model.getRecordList();
         dateList = new ArrayList<>();
@@ -63,21 +62,21 @@ public class heightLineChartFragment extends Fragment {
         if (recordList.size() > 0) {
             if (recordList.size() <= 10) {
                 for (int i = 1; i <= recordList.size(); i++) {
-                    Float currentMin = Float.parseFloat(recordList.get(i - 1).getHeight());
-                    Float currentMax = Float.parseFloat(recordList.get(i - 1).getHeight());
+                    Float currentMin = Float.parseFloat(recordList.get(i - 1).getWaistline());
+                    Float currentMax = Float.parseFloat(recordList.get(i - 1).getWaistline());
                     if (currentMin <= min) {
                         min = currentMin;
                     }
                     if (currentMin >= max) {
                         max = currentMax;
                     }
-                    valuesList.add(new Entry(i - 1, Float.parseFloat(recordList.get(i - 1).getHeight())));
+                    valuesList.add(new Entry(i - 1, Float.parseFloat(recordList.get(i - 1).getWaistline())));
                     dateList.add(recordList.get(i - 1).getDate().substring(6, 11));
                 }
             } else {
                 int j = 1;
                 for (int i = 10; i >= 0; i--) {
-                    valuesList.add(new Entry(j - 1, Float.parseFloat(recordList.get(j - 1).getHeight())));
+                    valuesList.add(new Entry(j - 1, Float.parseFloat(recordList.get(j - 1).getWaistline())));
                     dateList.add(recordList.get(recordList.size() - 1 - i).getDate().substring(6, 11));
                     j++;
                 }

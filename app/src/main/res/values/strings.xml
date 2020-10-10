@@ -5,6 +5,8 @@
     <string name="navigation_chat">心得交流</string>
     <string name="health_edit">編輯資料</string>
     <string name="health_add">新增資料</string>
+    <string name="edit_history">編輯歷程</string>
+    <string name="add_item">新增項目</string>
     <string name="text1">過重：24&#060;=BMI&#060;27</string>
     <string name="text2">輕度肥胖：27 &#060;= BMI &#060; 30</string>
     <string name="text3">中度肥胖：30 &#060;= BMI &#060; 35</string>
