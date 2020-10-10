@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/titleBar"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_width="fill_parent"
+        android:background="@color/purple"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/back"
+            android:layout_width="50dp"
+            android:layout_height="40dp"
+            android:background="#00000000"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center"
+            app:srcCompat="@drawable/buttin_back" />
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/textTitle"
+                android:text="@string/health_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="?attr/actionBarSize"
+                android:background="@color/purple"
+                android:textColor="@color/white"
+                android:paddingLeft="10dp"
+                android:gravity="center_vertical|left"
+                android:textSize="20dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent" >
+
+            <ImageView
+                android:id="@+id/add"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:layout_gravity="center"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                app:srcCompat="@drawable/buttin_add" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="50dp"
+            android:layout_height="fill_parent" >
+
+            <ImageView
+                android:id="@+id/del"
+                android:layout_width="50dp"
+                android:layout_height="30dp"
+                android:background="#00000000"
+                android:scaleType="fitCenter"
+                android:layout_gravity="center"
+                app:srcCompat="@drawable/buttin_del" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_below="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="left"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/gender"
+                android:layout_width="50dp"
+                android:text="性別"
+                android:layout_height="match_parent"/>
+
+            <TextView
+                android:id="@+id/height"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:text="身高"/>
+
+
+            <TextView
+                android:id="@+id/weight"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:text="體重"/>
+
+            <TextView
+                android:id="@+id/waistline"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:text="腰圍"/>
+
+            <TextView
+                android:id="@+id/bmi"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:text="BMI"/>
+
+            <TextView
+                android:id="@+id/bodyFat"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:text="體脂率"/>
+
+            <TextView
+                android:id="@+id/date"
+                android:layout_width="50dp"
+                android:layout_height="match_parent"
+                android:text="日期"/>
+
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/folderName" />
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">FITNESS</string>
+    <string name="navigation_health">體態管理</string>
+    <string name="navigation_history">健身歷程</string>
+    <string name="navigation_chat">心得交流</string>
+    <string name="health_edit">編輯資料</string>
+    <string name="health_add">新增資料</string>
+    <string name="text1">過重：24&#060;=BMI&#060;27</string>
+    <string name="text2">輕度肥胖：27 &#060;= BMI &#060; 30</string>
+    <string name="text3">中度肥胖：30 &#060;= BMI &#060; 35</string>
+    <string name="text4">重度肥胖：BMI >= 35</string>
+</resources>
