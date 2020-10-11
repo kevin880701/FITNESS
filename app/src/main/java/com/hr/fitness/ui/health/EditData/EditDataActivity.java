@@ -17,7 +17,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.hr.fitness.MainActivity;
 import com.hr.fitness.Model.InfoListAdapter;
-import com.hr.fitness.Model.Record;
+import com.hr.fitness.Model.HealthRecord;
 import com.hr.fitness.R;
 import com.hr.fitness.SQLite.SQLiteDBHelper;
 import com.hr.fitness.ui.health.EnterData.EnterDataActivity;
@@ -61,7 +61,7 @@ public class EditDataActivity extends AppCompatActivity {
     LinearLayout layout1;
 
     EditDataPresenter presenter;
-    ArrayList<Record> recordList;
+    ArrayList<HealthRecord> healthRecordList;
     InfoListAdapter infoListAdapter;
 
     SQLiteDBHelper dbHelper;
@@ -82,12 +82,12 @@ public class EditDataActivity extends AppCompatActivity {
 
         presenter = new EditDataPresenter(listDB);
         presenter.getData();
-        recordList = presenter.getRecordList();
+        healthRecordList = presenter.getHealthRecordList();
 
         list.setLayoutManager(new LinearLayoutManager(this.getApplicationContext()));
         list.addItemDecoration(new DividerItemDecoration(this.getApplicationContext(), DividerItemDecoration.VERTICAL));
 
-        infoListAdapter = new InfoListAdapter(recordList, presenter);
+        infoListAdapter = new InfoListAdapter(healthRecordList, presenter);
         list.setAdapter(infoListAdapter);
 
     }
@@ -107,7 +107,7 @@ public class EditDataActivity extends AppCompatActivity {
                 break;
             case R.id.del:
                 if (infoListAdapter.isClickStatus()) {
-                    recordList.remove(infoListAdapter.getCurrentPosition());
+                    healthRecordList.remove(infoListAdapter.getCurrentPosition());
                     presenter.delDB(infoListAdapter.getCurrentId());
                 }
                 infoListAdapter.setClickStatus(false);

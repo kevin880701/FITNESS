@@ -1,6 +1,6 @@
 package com.hr.fitness.SQLite;
 
-public final class FeedReaderContract {
+public final class BmiFormat {
     public static final String DATABASE_NAME = "HealthRecord.db";
     public static final String BMI_TABLE_NAME = "bmiRecord";
     public static final String id = "id";

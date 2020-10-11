@@ -18,7 +18,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHolder> {
-    ArrayList<Record> recordList;
+    ArrayList<HealthRecord> healthRecordList;
     EditDataPresenter presnter;
 
     boolean clickStatus = false;
@@ -26,7 +26,7 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHo
     public int currentId;
 
     public InfoListAdapter(ArrayList recordList, EditDataPresenter presnter) {
-        this.recordList = recordList;
+        this.healthRecordList = recordList;
         this.presnter = presnter;
     }
 
@@ -69,29 +69,29 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHo
             public void onClick(View view) {
                 clickStatus = true;
                 if(!(position == CurrentPosition)){
-                    recordList.get(CurrentPosition).setBeenClick(false);
+                    healthRecordList.get(CurrentPosition).setBeenClick(false);
 //                    holder.date.setTextColor(Color.parseColor("#dc143c"));
                 }
                 CurrentPosition=position;
-                recordList.get(position).setBeenClick(!recordList.get(position).isBeenClick());
-                currentId = recordList.get(position).getId();
+                healthRecordList.get(position).setBeenClick(!healthRecordList.get(position).isBeenClick());
+                currentId = healthRecordList.get(position).getId();
                 notifyDataSetChanged();
             }
         });
 
 
-        if(recordList.get(position).getGender() == 0){
+        if(healthRecordList.get(position).getGender() == 0){
             holder.gender.setText("女");
         }else{
             holder.gender.setText("男");
         }
-        holder.height.setText( recordList.get(position).getHeight());
-        holder.weight.setText(recordList.get(position).getWeight());
-        holder.waistline.setText(recordList.get(position).getWaistline());
-        holder.bmi.setText(recordList.get(position).getBMI());
-        holder.bodyFat.setText(recordList.get(position).getBodyFat());
-        holder.date.setText(recordList.get(position).getDate().substring(5,10));
-        if(recordList.get(position).isBeenClick()){
+        holder.height.setText( healthRecordList.get(position).getHeight());
+        holder.weight.setText(healthRecordList.get(position).getWeight());
+        holder.waistline.setText(healthRecordList.get(position).getWaistline());
+        holder.bmi.setText(healthRecordList.get(position).getBMI());
+        holder.bodyFat.setText(healthRecordList.get(position).getBodyFat());
+        holder.date.setText(healthRecordList.get(position).getDate().substring(5,10));
+        if(healthRecordList.get(position).isBeenClick()){
             holder.gender.setTextColor(Color.parseColor("#dc143c"));
             holder.height.setTextColor(Color.parseColor("#dc143c"));
             holder.weight.setTextColor(Color.parseColor("#dc143c"));
@@ -113,7 +113,7 @@ public class InfoListAdapter extends RecyclerView.Adapter<InfoListAdapter.ViewHo
 
     @Override
     public int getItemCount() {
-        return recordList.size();
+        return healthRecordList.size();
     }
 
     public int getCurrentPosition() {

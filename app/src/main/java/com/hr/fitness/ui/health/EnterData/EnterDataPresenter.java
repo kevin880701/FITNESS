@@ -3,8 +3,8 @@ package com.hr.fitness.ui.health.EnterData;
 import android.database.sqlite.SQLiteDatabase;
 import android.text.format.DateFormat;
 
-import com.hr.fitness.Model.Record;
-import com.hr.fitness.SQLite.FeedReaderContract;
+import com.hr.fitness.Model.HealthRecord;
+import com.hr.fitness.SQLite.BmiFormat;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
@@ -13,11 +13,11 @@ import java.util.Calendar;
 public class EnterDataPresenter {
 
     SQLiteDatabase musicListDB;
-    ArrayList<Record> recordList;
+    ArrayList<HealthRecord> healthRecordList;
 
     public EnterDataPresenter(SQLiteDatabase musicListDB){
         this.musicListDB = musicListDB;
-        recordList = new ArrayList();
+        healthRecordList = new ArrayList();
     }
 
 
@@ -34,13 +34,13 @@ public class EnterDataPresenter {
 
         Calendar mCal = Calendar.getInstance();
         date = DateFormat.format("yyyy/MM/dd hh:mm;ss", mCal.getTime());
-        String sql = "INSERT into '" + FeedReaderContract.BMI_TABLE_NAME + "' ( '"  + FeedReaderContract.gender
-                + "','" + FeedReaderContract.height
-                + "','" + FeedReaderContract.weight
-                + "','" + FeedReaderContract.waistline
-                + "','" + FeedReaderContract.BMI
-                + "','" + FeedReaderContract.bodyFat
-                + "','" + FeedReaderContract.date + "' ) " +
+        String sql = "INSERT into '" + BmiFormat.BMI_TABLE_NAME + "' ( '"  + BmiFormat.gender
+                + "','" + BmiFormat.height
+                + "','" + BmiFormat.weight
+                + "','" + BmiFormat.waistline
+                + "','" + BmiFormat.BMI
+                + "','" + BmiFormat.bodyFat
+                + "','" + BmiFormat.date + "' ) " +
                 "VALUES (?,?,?,?,?,?,?)";
         Object[] mValue = new Object[]{gender,height,weight,waistline,BMI,bodyFat,date.toString()};
 

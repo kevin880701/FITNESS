@@ -7,9 +7,9 @@ import android.database.sqlite.SQLiteDatabase;
 import androidx.viewpager.widget.ViewPager;
 
 import com.hr.fitness.Model.Model;
-import com.hr.fitness.Model.Record;
+import com.hr.fitness.Model.HealthRecord;
 import com.hr.fitness.Model.ViewPagerAdapter;
-import com.hr.fitness.SQLite.FeedReaderContract;
+import com.hr.fitness.SQLite.BmiFormat;
 import com.hr.fitness.ui.health.bmi.bmiLineChartFragment;
 import com.hr.fitness.ui.health.bodyFat.bodyFatLineChartFragment;
 import com.hr.fitness.ui.health.height.heightLineChartFragment;
@@ -22,13 +22,13 @@ public class HealthPresenter {
 
     ViewPagerAdapter pagerAdapter;
     Model model;
-    ArrayList<Record> recordList;
+    ArrayList<HealthRecord> healthRecordList;
     SQLiteDatabase healthListDB;
 
     public HealthPresenter(SQLiteDatabase healthListDB, Model model){
         this.model = model;
         this.healthListDB = healthListDB;
-        recordList = new ArrayList<>();
+        healthRecordList = new ArrayList<>();
     }
 
     public void setupViewPager(ViewPager viewPager) {
@@ -41,51 +41,51 @@ public class HealthPresenter {
     }
 
     public void createDB(){
-        String createTable = "CREATE TABLE IF NOT EXISTS '" + FeedReaderContract.BMI_TABLE_NAME + "'( " +
-                FeedReaderContract.id + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                FeedReaderContract.gender  + " INTEGER, " +
-                FeedReaderContract.height  + " VARCHAR(250), " +
-                FeedReaderContract.weight  + " VARCHAR(250), " +
-                FeedReaderContract.waistline + " VARCHAR(250)," +
-                FeedReaderContract.BMI + " VARCHAR(250)," +
-                FeedReaderContract.bodyFat + " VARCHAR(250)," +
-                FeedReaderContract.date + " VARCHAR(250)" +
+        String createTable = "CREATE TABLE IF NOT EXISTS '" + BmiFormat.BMI_TABLE_NAME + "'( " +
+                BmiFormat.id + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                BmiFormat.gender  + " INTEGER, " +
+                BmiFormat.height  + " VARCHAR(250), " +
+                BmiFormat.weight  + " VARCHAR(250), " +
+                BmiFormat.waistline + " VARCHAR(250)," +
+                BmiFormat.BMI + " VARCHAR(250)," +
+                BmiFormat.bodyFat + " VARCHAR(250)," +
+                BmiFormat.date + " VARCHAR(250)" +
                 ");";
         healthListDB.execSQL(createTable);
     }
 
     public void getData() {
-        String selectSQL = "SELECT * FROM '" + FeedReaderContract.BMI_TABLE_NAME + "' ORDER BY '" + FeedReaderContract.id + "' ASC";
+        String selectSQL = "SELECT * FROM '" + BmiFormat.BMI_TABLE_NAME + "' ORDER BY '" + BmiFormat.id + "' ASC";
         Cursor cursor = healthListDB.rawQuery(selectSQL,null);
         while (cursor.moveToNext()) {
-            int id = cursor.getInt(cursor.getColumnIndex(FeedReaderContract.id));
-            int gender = cursor.getInt(cursor.getColumnIndex(FeedReaderContract.gender));
-            String height = cursor.getString(cursor.getColumnIndex(FeedReaderContract.height));
-            String weight = cursor.getString(cursor.getColumnIndex(FeedReaderContract.weight));
-            String waistline = cursor.getString(cursor.getColumnIndex(FeedReaderContract.waistline));
-            String BMI = cursor.getString(cursor.getColumnIndex(FeedReaderContract.BMI));
-            String bodyFat = cursor.getString(cursor.getColumnIndex(FeedReaderContract.bodyFat));
-            String date = cursor.getString(cursor.getColumnIndex(FeedReaderContract.date));
+            int id = cursor.getInt(cursor.getColumnIndex(BmiFormat.id));
+            int gender = cursor.getInt(cursor.getColumnIndex(BmiFormat.gender));
+            String height = cursor.getString(cursor.getColumnIndex(BmiFormat.height));
+            String weight = cursor.getString(cursor.getColumnIndex(BmiFormat.weight));
+            String waistline = cursor.getString(cursor.getColumnIndex(BmiFormat.waistline));
+            String BMI = cursor.getString(cursor.getColumnIndex(BmiFormat.BMI));
+            String bodyFat = cursor.getString(cursor.getColumnIndex(BmiFormat.bodyFat));
+            String date = cursor.getString(cursor.getColumnIndex(BmiFormat.date));
 
-            Record record = new Record();
-            record.setId(id);
-            record.setGender(gender);
-            record.setHeight(height);
-            record.setWeight(weight);
-            record.setWaistline(waistline);
-            record.setBMI(BMI);
-            record.setBodyFat(bodyFat);
-            record.setDate(date);
-            recordList.add(record);
+            HealthRecord healthRecord = new HealthRecord();
+            healthRecord.setId(id);
+            healthRecord.setGender(gender);
+            healthRecord.setHeight(height);
+            healthRecord.setWeight(weight);
+            healthRecord.setWaistline(waistline);
+            healthRecord.setBMI(BMI);
+            healthRecord.setBodyFat(bodyFat);
+            healthRecord.setDate(date);
+            healthRecordList.add(healthRecord);
         }
-        model.setRecordList(recordList);
+        model.setHealthRecordList(healthRecordList);
     }
 
     public void setPagerAdapter(ViewPagerAdapter pagerAdapter){
         this.pagerAdapter = pagerAdapter;
     }
 
-    public ArrayList<Record> getRecordList() {
-        return recordList;
+    public ArrayList<HealthRecord> getHealthRecordList() {
+        return healthRecordList;
     }
 }

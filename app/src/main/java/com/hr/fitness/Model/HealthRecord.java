@@ -4,7 +4,7 @@ package com.hr.fitness.Model;
 import java.io.Serializable;
 
 
-public class Record implements Serializable {
+public class HealthRecord implements Serializable {
     public int id;
     public int gender;
     public String height;

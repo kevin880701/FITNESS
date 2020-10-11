@@ -13,7 +13,7 @@ import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.data.Entry;
 import com.hr.fitness.Model.LineChartData;
 import com.hr.fitness.Model.Model;
-import com.hr.fitness.Model.Record;
+import com.hr.fitness.Model.HealthRecord;
 import com.hr.fitness.R;
 
 import java.text.DecimalFormat;
@@ -37,7 +37,7 @@ public class weightLineChartFragment extends Fragment {
     LineChartData lineChartData;
     Model model;
     ArrayList<String> dateList;
-    public ArrayList<Record> recordList;
+    public ArrayList<HealthRecord> healthRecordList;
     DecimalFormat df;
     Float min = 9999f;
     Float max = 0f;
@@ -45,7 +45,7 @@ public class weightLineChartFragment extends Fragment {
 
     public weightLineChartFragment(Model model) {
         this.model = model;
-        recordList = model.getRecordList();
+        healthRecordList = model.getHealthRecordList();
         dateList = new ArrayList<>();
         df = new DecimalFormat("##0.0");
     }
@@ -61,25 +61,25 @@ public class weightLineChartFragment extends Fragment {
         // greenLine
         ArrayList<Entry> valuesList = new ArrayList<>();
 
-        if (recordList.size() > 0) {
-            if (recordList.size() <= 10) {
-                for (int i = 1; i <= recordList.size(); i++) {
-                    Float currentMin = Float.parseFloat(recordList.get(i - 1).getWeight());
-                    Float currentMax = Float.parseFloat(recordList.get(i - 1).getWeight());
+        if (healthRecordList.size() > 0) {
+            if (healthRecordList.size() <= 10) {
+                for (int i = 1; i <= healthRecordList.size(); i++) {
+                    Float currentMin = Float.parseFloat(healthRecordList.get(i - 1).getWeight());
+                    Float currentMax = Float.parseFloat(healthRecordList.get(i - 1).getWeight());
                     if (currentMin <= min) {
                         min = currentMin;
                     }
                     if (currentMin >= max) {
                         max = currentMax;
                     }
-                    valuesList.add(new Entry(i - 1, Float.parseFloat(recordList.get(i - 1).getWeight())));
-                    dateList.add(recordList.get(i - 1).getDate().substring(6, 11));
+                    valuesList.add(new Entry(i - 1, Float.parseFloat(healthRecordList.get(i - 1).getWeight())));
+                    dateList.add(healthRecordList.get(i - 1).getDate().substring(6, 11));
                 }
             } else {
                 int j = 1;
                 for (int i = 10; i >= 0; i--) {
-                    valuesList.add(new Entry(j - 1, Float.parseFloat(recordList.get(j - 1).getWeight())));
-                    dateList.add(recordList.get(recordList.size() - 1 - i).getDate().substring(6, 11));
+                    valuesList.add(new Entry(j - 1, Float.parseFloat(healthRecordList.get(j - 1).getWeight())));
+                    dateList.add(healthRecordList.get(healthRecordList.size() - 1 - i).getDate().substring(6, 11));
                     j++;
                 }
             }

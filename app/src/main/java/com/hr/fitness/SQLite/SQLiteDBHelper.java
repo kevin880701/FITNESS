@@ -8,7 +8,7 @@ public class SQLiteDBHelper extends SQLiteOpenHelper {
 
     private static final int DATABASE_VERSION = 1;
 
-    public SQLiteDBHelper(Context context) {super(context, FeedReaderContract.DATABASE_NAME, null, DATABASE_VERSION);
+    public SQLiteDBHelper(Context context) {super(context, BmiFormat.DATABASE_NAME, null, DATABASE_VERSION);
     }
     @Override
     public void onCreate(SQLiteDatabase db) {

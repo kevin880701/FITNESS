@@ -11,7 +11,7 @@ import java.util.ArrayList;
 public class Model implements Serializable {
     public SQLiteDatabase musicListDB;
 //    public DataDisplayActivity dataDisplayActivity;
-    public ArrayList<Record> recordList;
+    public ArrayList<HealthRecord> healthRecordList;
 
     public SQLiteDatabase getMusicListDB() {
         return musicListDB;
@@ -21,19 +21,11 @@ public class Model implements Serializable {
         this.musicListDB = musicListDB;
     }
 
-//    public DataDisplayActivity getDataDisplayActivity() {
-//        return dataDisplayActivity;
-//    }
-//
-//    public void setDataDisplayActivity(DataDisplayActivity dataDisplayActivity) {
-//        this.dataDisplayActivity = dataDisplayActivity;
-//    }
-
-    public ArrayList<Record> getRecordList() {
-        return recordList;
+    public ArrayList<HealthRecord> getHealthRecordList() {
+        return healthRecordList;
     }
 
-    public void setRecordList(ArrayList<Record> recordList) {
-        this.recordList = recordList;
+    public void setHealthRecordList(ArrayList<HealthRecord> healthRecordList) {
+        this.healthRecordList = healthRecordList;
     }
 }

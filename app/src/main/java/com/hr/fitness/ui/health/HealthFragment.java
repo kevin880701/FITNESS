@@ -17,7 +17,7 @@ import androidx.viewpager.widget.ViewPager;
 import com.google.android.material.tabs.TabLayout;
 import com.hr.fitness.MainActivity;
 import com.hr.fitness.Model.Model;
-import com.hr.fitness.Model.Record;
+import com.hr.fitness.Model.HealthRecord;
 import com.hr.fitness.Model.ViewPagerAdapter;
 import com.hr.fitness.R;
 import com.hr.fitness.SQLite.SQLiteDBHelper;
@@ -51,7 +51,7 @@ public class HealthFragment extends Fragment {
     MainActivity mainActivity;
     ArrayList<Fragment> fragmentArrayList = new ArrayList<>();
     Model model;
-    ArrayList<Record> recordList;
+    ArrayList<HealthRecord> healthRecordList;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -70,7 +70,7 @@ public class HealthFragment extends Fragment {
         healthPresenter.createDB();
         //讀取資料庫
         healthPresenter.getData();
-        recordList = healthPresenter.getRecordList();
+        healthRecordList = healthPresenter.getHealthRecordList();
 
         fragmentArrayList.add(new weightLineChartFragment(model));
         fragmentArrayList.add(new heightLineChartFragment(model));
@@ -93,7 +93,7 @@ public class HealthFragment extends Fragment {
             case R.id.editBtn:
                 Log.v("PPP","editBtn Click");
                 Intent intent = new Intent(getContext(), EditDataActivity.class);
-                intent.putExtra("List", recordList);
+                intent.putExtra("List", healthRecordList);
                 getActivity().startActivity(intent);
                 getActivity().finish();
                 break;
